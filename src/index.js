@@ -5,9 +5,6 @@ import App from "./components/App";
 import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 import store from "./configureStore.js";
-// import { setInitial } from "./localStoreFuncs";
-
-// setInitial();
 
 render(
   <Provider store={store}>

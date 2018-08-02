@@ -6,7 +6,7 @@ export default {
     margin: "70px 30px 0 60px",
     "&:hover": {
       "& div": {
-        backgroundColor: "rgba(100, 100, 100, 0.65)"
+        backgroundColor: "rgba(100, 100, 100, 0.7)"
       }
     },
     boxShadow: "1px 1px 4px 1px"
@@ -18,7 +18,7 @@ export default {
   cardBottom: {
     padding: "10px 6px 0 10px",
     width: "184px",
-    backgroundColor: "rgba(100, 100, 100, 0.2)",
+    backgroundColor: "rgba(100, 100, 100, 0.25)",
     fontWeight: "600",
     position: "absolute",
     zIndex: "10",

@@ -1,10 +1,11 @@
 import { GET_MOVIES_SUCCESS, GET_MOVIES_FAIL } from "../constants";
 import fetch from "cross-fetch";
-import { getFavorites } from "../localStoreFuncs";
+import { getFavorites, getApiKey } from "../localStoreFuncs";
 
 export const getPopularMovies = (page = 1) => dispatch => {
+  if (!getApiKey()) return;
   fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=5bd9acca54182b3e04ea3b527c3e920a&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${getApiKey()}&language=en-US&page=${page}`
   )
     .then(data => data.json(), e => console.log("fetch error: ", e))
     .then(data => dispatch(getMoviesSuccess(data.results)))
@@ -12,8 +13,9 @@ export const getPopularMovies = (page = 1) => dispatch => {
 };
 
 export const getMoviesBySearch = str => dispatch => {
+  if (!getApiKey()) return;
   fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=5bd9acca54182b3e04ea3b527c3e920a&language=en-US&query=${str}&include_adult=true`
+    `https://api.themoviedb.org/3/search/movie?api_key=${getApiKey()}&language=en-US&query=${str}&include_adult=true`
   )
     .then(data => data.json(), e => console.log("fetch error: ", e))
     .then(data => dispatch(getMoviesSuccess(data.results)))
@@ -21,12 +23,11 @@ export const getMoviesBySearch = str => dispatch => {
 };
 
 export const getFavMovies = () => dispatch => {
+  if (!getApiKey()) return;
   const favMoviesIds = getFavorites();
   Promise.all(
     favMoviesIds.map(id =>
-      fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=5bd9acca54182b3e04ea3b527c3e920a`
-      )
+      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${getApiKey()}`)
     )
   )
     .then(data => Promise.all(data.map(v => v.json())))

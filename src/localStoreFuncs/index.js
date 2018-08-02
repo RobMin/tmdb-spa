@@ -1,11 +1,26 @@
-export const setInitial = () => {
-  localStorage.setItem("isAuth", "false");
-  localStorage.setItem("favorites", "[]");
+// export const setInitial = () => {
+//   localStorage.setItem("isAuth", "false");
+//   localStorage.setItem("favorites", "[]");
+//   localStorage.setItem("apiKey", "");
+// };
+
+export const getIsAuth = () => {
+  if (localStorage.getItem("isAuth") === null)
+    localStorage.setItem("isAuth", "false");
+  return JSON.parse(localStorage.getItem("isAuth"));
 };
 
-export const getIsAuth = () => JSON.parse(localStorage.getItem("isAuth"));
+export const getFavorites = () => {
+  if (localStorage.getItem("favorites") === null)
+    localStorage.setItem("favorites", "[]");
+  return JSON.parse(localStorage.getItem("favorites"));
+};
 
-export const getFavorites = () => JSON.parse(localStorage.getItem("favorites"));
+export const getApiKey = () => localStorage.getItem("apiKey");
+
+export const addApiKey = apiKey => localStorage.setItem("apiKey", `${apiKey}`);
+
+export const remApiKey = () => localStorage.setItem("apiKey", "");
 
 export const logIn = () => {
   localStorage.setItem("isAuth", "true");

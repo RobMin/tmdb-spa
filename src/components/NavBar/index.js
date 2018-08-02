@@ -4,7 +4,7 @@ import styles from "./styles";
 
 import Input from "@material-ui/core/Input";
 import { Link } from "react-router-dom";
-import { logOut, clearFav } from "../../localStoreFuncs";
+import { logOut, clearFav, remApiKey } from "../../localStoreFuncs";
 import logo from "../../Pic/logo.png";
 
 class NavBar extends Component {
@@ -19,6 +19,7 @@ class NavBar extends Component {
   handleLogout = () => {
     logOut();
     clearFav();
+    remApiKey();
   };
 
   render() {

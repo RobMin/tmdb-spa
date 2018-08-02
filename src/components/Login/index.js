@@ -5,49 +5,38 @@ import styles from "./styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
-import { logIn, getIsAuth } from "../../localStoreFuncs";
+import { logIn, getIsAuth, addApiKey } from "../../localStoreFuncs";
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      password: "",
-      showUserError: false,
-      showPassError: false
+      apiKey: "",
+      showKeyError: false
     };
   }
 
-  handleUsernameChange = e => this.setState({ username: e.target.value });
+  handleKeyChange = e => this.setState({ apiKey: e.target.value });
 
-  handlePasswordChange = e => this.setState({ password: e.target.value });
-
-  checkValidUser = () => {
-    const reg = /^[a-z0-9_-]{6,14}$/;
-    const userValid = reg.test(this.state.username);
-    this.setState({ showUserError: !userValid });
-    return userValid;
+  checkValidKey = () => {
+    const reg = /[a-z0-9]{32}/;
+    const valid = reg.test(this.state.apiKey);
+    this.setState({ showUserError: !valid });
+    return valid;
   };
 
-  checkValidPass = () => {
-    const reg = /^[A-Za-z0-9_-]{6,14}$/;
-    const passValid = reg.test(this.state.password);
-    this.setState({ showPassError: !passValid });
-    return passValid;
-  };
-
-  showUserError = () => this.setState({ showUserError: true });
-  showPassError = () => this.setState({ showPassError: true });
+  showKeyError = () => this.setState({ showKeyError: true });
 
   handleSubmit = () => {
-    if (this.checkValidUser() && this.checkValidPass()) {
+    if (this.checkValidKey()) {
+      addApiKey(this.state.apiKey);
       logIn();
     }
   };
 
   render() {
     const { classes } = this.props;
-    const { showUserError, showPassError } = this.state;
+    const { showKeyError } = this.state;
     const isAuth = getIsAuth();
     if (isAuth)
       return (
@@ -58,38 +47,17 @@ class Login extends Component {
     return (
       <div className={classes.container}>
         <div>
+          <h2 className={classes.h2}>TMDB API KEY</h2>
           <Input
             autoFocus
             required
             className={classes.input}
-            placeholder="Username"
-            onChange={this.handleUsernameChange}
-            value={this.state.username}
-            onBlur={this.checkValidUser}
-            error={showUserError}
+            onChange={this.handleKeyChange}
+            value={this.state.apiKey}
+            onBlur={this.checkValidKey}
+            error={showKeyError}
           />
-          {showUserError && (
-            <p className={classes.error}>
-              Username must contain 6-14 <br /> symbols (a-z, 0-9, -, _)
-            </p>
-          )}
-        </div>
-        <div>
-          <Input
-            required
-            type="password"
-            placeholder="Password"
-            className={classes.input}
-            onChange={this.handlePasswordChange}
-            value={this.state.Password}
-            onBlur={this.checkValidPass}
-            error={showPassError}
-          />
-          {showPassError && (
-            <p className={classes.error}>
-              Password must contain 6-14 <br /> symbols (A-Z, a-z, 0-9, -, _)
-            </p>
-          )}
+          {showKeyError && <p className={classes.error}>INVALID KEY</p>}
         </div>
         <Button
           className={classes.button}

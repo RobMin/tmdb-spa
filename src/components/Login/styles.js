@@ -7,7 +7,7 @@ export default {
     backgroundSize: "cover",
     padding: "0 13px 0 13px",
     borderRadius: "15px",
-    width: "250px",
+    width: "355px",
     height: "180px",
     display: "flex",
     flexDirection: "column",
@@ -15,6 +15,7 @@ export default {
     top: "200px"
   },
   input: {
+    width: "350px",
     fontSize: "19px",
     backgroundColor: "white",
     borderRadius: "5px",
@@ -30,5 +31,8 @@ export default {
     fontSize: "11px",
     lineHeight: "1",
     fontFamily: "Arial, Helvetica, sans-serif"
+  },
+  h2: {
+    color: "white"
   }
 };
