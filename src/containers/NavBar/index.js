@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar";
 
 function mapStatetoProps(state) {
   return {
-    movies: state.movies,
+    movies: state.movies
   };
 }
 

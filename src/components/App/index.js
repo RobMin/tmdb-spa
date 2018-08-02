@@ -12,7 +12,6 @@ import PrivateRoute from "../PrivateRoute";
 import { getIsAuth } from "../../localStoreFuncs";
 import image from "../../Pic/backgroundImage.jpg";
 
-
 class App extends Component {
   render() {
     const { classes } = this.props;

@@ -15,7 +15,7 @@ class Favorites extends Component {
     if (!isAuth) return <Redirect to="/login" />;
     return (
       <div>
-        <NavBar showSearch={false}/>
+        <NavBar showSearch={false} />
         <div className={classes.main}>
           {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
         </div>

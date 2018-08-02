@@ -31,4 +31,4 @@ export default {
     lineHeight: "1",
     fontFamily: "Arial, Helvetica, sans-serif"
   }
-}
+};

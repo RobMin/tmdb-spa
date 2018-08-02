@@ -13,4 +13,4 @@ export default {
     backgroundColor: "black",
     minHeight: "700px"
   }
-}
+};

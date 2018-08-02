@@ -13,7 +13,7 @@ export default {
   },
   cardImage: {
     position: "relative",
-    zIndex: "2",
+    zIndex: "2"
   },
   cardBottom: {
     padding: "10px 6px 0 10px",
@@ -26,4 +26,4 @@ export default {
     textAlign: "center",
     color: "#ebebeb"
   }
-}
+};

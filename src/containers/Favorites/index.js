@@ -6,7 +6,7 @@ import Favorites from "../../components/Favorites";
 
 function mapStatetoProps(state) {
   return {
-    movies: state.movies,
+    movies: state.movies
   };
 }
 

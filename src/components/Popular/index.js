@@ -15,7 +15,7 @@ class Popular extends Component {
     if (!isAuth) return <Redirect to="/login" />;
     return (
       <div>
-        <NavBar showSearch={true}/>
+        <NavBar showSearch={true} />
         <div className={classes.main}>
           {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
         </div>

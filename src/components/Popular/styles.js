@@ -7,4 +7,4 @@ export default {
     flexWrap: "wrap",
     marginBottom: "50px"
   }
-}
+};

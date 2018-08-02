@@ -32,7 +32,6 @@ export default {
   },
   input: {
     color: "white",
-    textDecoration: "none",
-    
+    textDecoration: "none"
   }
-}
+};

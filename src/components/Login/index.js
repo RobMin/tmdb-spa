@@ -41,7 +41,7 @@ class Login extends Component {
 
   handleSubmit = () => {
     if (this.checkValidUser() && this.checkValidPass()) {
-      logIn()
+      logIn();
     }
   };
 
@@ -49,7 +49,12 @@ class Login extends Component {
     const { classes } = this.props;
     const { showUserError, showPassError } = this.state;
     const isAuth = getIsAuth();
-    if (isAuth) return (<div><Redirect to="/movies/popular" /></div>);
+    if (isAuth)
+      return (
+        <div>
+          <Redirect to="/movies/popular" />
+        </div>
+      );
     return (
       <div className={classes.container}>
         <div>

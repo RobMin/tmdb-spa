@@ -6,7 +6,7 @@ import Popular from "../../components/Popular";
 
 function mapStatetoProps(state) {
   return {
-    movies: state.movies,
+    movies: state.movies
   };
 }
 

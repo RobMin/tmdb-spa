@@ -25,7 +25,7 @@ class MovieCard extends Component {
       addFav(this.props.movie.id);
       this.setState({ fav: true });
     }
-  }
+  };
 
   render() {
     const { classes, movie } = this.props;
@@ -39,11 +39,7 @@ class MovieCard extends Component {
         <div className={classes.cardBottom}>
           {movie.title}
           <IconButton onClick={this.handleFavButtonClick}>
-            {this.state.fav ? (
-              <Favorite />
-            ) : (
-              <FavoriteBorder />
-            )}
+            {this.state.fav ? <Favorite /> : <FavoriteBorder />}
           </IconButton>
         </div>
       </div>
