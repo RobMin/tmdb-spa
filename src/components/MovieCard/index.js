@@ -16,14 +16,15 @@ class MovieCard extends Component {
     };
   }
 
-  handleFavRemove = () => {
-    remFav(this.props.movie.id);
-    this.setState({ fav: false });
-  }
-
-  handleFavAdd = () => {
-    addFav(this.props.movie.id);
-    this.setState({ fav: true });
+  handleFavButtonClick = () => {
+    const { fav } = this.state;
+    if (fav) {
+      remFav(this.props.movie.id);
+      this.setState({ fav: false });
+    } else {
+      addFav(this.props.movie.id);
+      this.setState({ fav: true });
+    }
   }
 
   render() {
@@ -37,11 +38,11 @@ class MovieCard extends Component {
         />
         <div className={classes.cardBottom}>
           {movie.title}
-          <IconButton>
+          <IconButton onClick={this.handleFavButtonClick}>
             {this.state.fav ? (
-              <Favorite onClick={this.handleFavRemove} />
+              <Favorite />
             ) : (
-              <FavoriteBorder onClick={this.handleFavAdd} />
+              <FavoriteBorder />
             )}
           </IconButton>
         </div>
